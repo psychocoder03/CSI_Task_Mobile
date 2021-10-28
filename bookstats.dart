@@ -239,12 +239,14 @@ class _BookStatsState extends State<BookStats> {
             ),
           ),
           new Container(
+              margin: EdgeInsets.fromLTRB(100, 20, 20, 2),
               width: 200,
-              height: 350,
+              height: 300,
               decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage("assets/IT.jpeg")
+                  image: AssetImage("assets/IT.jpeg",)
                 ),
               )
           ),
