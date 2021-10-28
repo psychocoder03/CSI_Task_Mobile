@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:async';
@@ -34,7 +36,7 @@ class _BookStatsState extends State<BookStats> {
       ],
         ),
       ),
-      body: Container(
+      /*body: Container(
         decoration: BoxDecoration(
             image: DecorationImage(
                 image: AssetImage('assets/IT.jpeg'),
@@ -63,6 +65,7 @@ class _BookStatsState extends State<BookStats> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
+
                     SizedBox(
                       height: 10.0,
                     ),
@@ -220,7 +223,56 @@ class _BookStatsState extends State<BookStats> {
             ],
           ),
         ),
-      )
+      )*/
+      body: Stack(
+        children: <Widget>[
+          new Container(
+            decoration: new BoxDecoration(image: new DecorationImage(image: new AssetImage("assets/IT.jpeg"), fit: BoxFit.cover)),
+            child: ClipRRect( // make sure we apply clip it properly
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 11, sigmaY: 11),
+                child: Container(
+                  alignment: Alignment.center,
+                  color: Colors.grey.withOpacity(0.2),
+                ),
+              ),
+            ),
+          ),
+          new Container(
+              width: 200,
+              height: 350,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage("assets/IT.jpeg")
+                ),
+              )
+          ),
+          SingleChildScrollView(
+            child: new Container(
+              color: Colors.transparent,
+              child: new Column(
+                children: <Widget>[
+                  new Row(
+                    children: <Widget>[
+                      new Padding( padding: EdgeInsets.only(top: 50.0)),
+
+                    ],
+                  ),
+                  new Row(
+                    children: <Widget>[
+                      new Padding( padding: EdgeInsets.only(left: MediaQuery.of(context).size.height/9)),    // LEFT // TOP // RIGHT // BOTTOM //
+                      new Text("Song 1"),
+                      new Padding( padding: EdgeInsets.only(left: MediaQuery.of(context).size.height/4.2)),
+                      new Text("Song 2"),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
